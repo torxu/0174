@@ -16,8 +16,13 @@ public class Persona
         kilogramosPersona = kilogramos;
         alturaPersona = altura;
         edadPersona = edad;
-        metabolismoBasal = this.metabolismoBasal;
         caloriasIngeridas = this.caloriasIngeridas;
+        if(sexoPersona){
+            metabolismoBasal = ((10*kilogramosPersona)+(6*alturaPersona)+(5*edadPersona)+5);
+        }
+        else{
+            metabolismoBasal = ((10*kilogramosPersona)+(6*alturaPersona)+(5*edadPersona)-161);
+        }
     }
 
     public int comer(Comida comidaConsumida)
@@ -30,17 +35,29 @@ public class Persona
         else{
             caloriasComida = -1;
         }
-        if(sexoPersona){
-            metabolismoBasal = ((10*kilogramosPersona)+(6*alturaPersona)+(5*edadPersona)+5);
-        }
-        else{
-            metabolismoBasal = ((10*kilogramosPersona)+(6*alturaPersona)+(5*edadPersona)-161);
-        }
         return caloriasComida;
     }
 
     public int getCaloriasIngeridas()
     {
         return caloriasIngeridas;
+    }
+    
+    public String contestar(String pregunta)
+    {
+        String preguntaComparada = pregunta;
+        String comentario = pregunta;
+        if(caloriasIngeridas > metabolismoBasal || preguntaComparada.length()%3 == 0){
+            comentario = "SI";
+        }
+        else{
+            comentario = "NO";
+        }
+        if(caloriasIngeridas > metabolismoBasal || preguntaComparada.contains(nombrePersona)){
+            comentario = pregunta.toUpperCase();
+        }
+        System.out.println(comentario);
+        
+        return comentario;
     }
 }

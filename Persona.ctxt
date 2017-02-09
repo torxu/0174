@@ -5,4 +5,6 @@ comment1.params=comidaConsumida
 comment1.target=int\ comer(Comida)
 comment2.params=
 comment2.target=int\ getCaloriasIngeridas()
-numComments=3
+comment3.params=pregunta
+comment3.target=java.lang.String\ contestar(java.lang.String)
+numComments=4
